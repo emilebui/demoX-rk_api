@@ -1,0 +1,24 @@
+event:
+  - name: my-event
+    outputPaths: [""]
+
+echo:
+  - name: demoX-rk_api                                     # Required
+    port: 8080                                             # Required
+    enabled: true                                          # Required
+    eventEntry: my-event
+    commonService:
+      enabled: true                                       # Optional, default: false
+    sw:
+      enabled: true                                        # Optional, default: false
+    docs:
+      enabled: true                                        # Optional, default: false
+    middleware:
+      logging:
+        enabled: true
+
+logger:
+  - name: app-logger
+    zap:
+      initialFields:                                      # Optional, default: empty map
+        service: demoX-rk_api
