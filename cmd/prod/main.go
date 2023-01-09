@@ -1,10 +1,7 @@
 package main
 
 import (
-	"context"
-	"github.com/emilebui/demoX-rk_api/internal/handlers"
-	rkboot "github.com/rookie-ninja/rk-boot/v2"
-	rkecho "github.com/rookie-ninja/rk-echo/boot"
+	"github.com/emilebui/demoX-rk_api/cmd"
 )
 
 // @title Swagger DemoX-rk_api API Interface
@@ -22,18 +19,5 @@ import (
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
 func main() {
-	// Create a new boot instance.
-	//swaginit.GenerateSwagger()
-
-	boot := rkboot.NewBoot()
-
-	// Register handler
-	echoEntry := rkecho.GetEchoEntry("demoX-rk_api")
-
-	// Bootstrap
-	boot.Bootstrap(context.TODO())
-
-	echoEntry.Echo.GET("/v1/greeter", handlers.Greeter)
-
-	boot.WaitForShutdownSig(context.TODO())
+	cmd.Run()
 }

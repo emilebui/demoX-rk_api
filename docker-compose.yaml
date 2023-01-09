@@ -1,10 +1,10 @@
 version: '3.7'
 
 services:
-  go_app:
+  rk_api:
     image: rk_api:latest
     build: .
     restart: always
-    container_name: go_app
+    container_name: rk_api
     ports:
       - "8080:8080"

@@ -2,6 +2,16 @@ event:
   - name: my-event
     outputPaths: [""]
 
+config:
+  - name: my-config
+    envPrefix: "demo"
+    path: "config.yaml"
+
+redis:
+  - name: redis                      # Required
+    enabled: true                    # Required
+    addrs: ["localhost:6379"]        # Required, One addr is for single, multiple is for cluster
+
 echo:
   - name: demoX-rk_api                                     # Required
     port: 8080                                             # Required

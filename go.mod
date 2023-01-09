@@ -14,9 +14,13 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.3 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
+	github.com/confluentinc/confluent-kafka-go v1.9.2 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/go-redis/redis/extra/rediscmd/v8 v8.11.5 // indirect
+	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -37,6 +41,7 @@ require (
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
+	github.com/rookie-ninja/rk-db/redis v1.2.14 // indirect
 	github.com/rookie-ninja/rk-entry/v2 v2.2.16 // indirect
 	github.com/rookie-ninja/rk-logger v1.2.13 // indirect
 	github.com/rookie-ninja/rk-query v1.2.14 // indirect
@@ -72,6 +77,7 @@ require (
 	google.golang.org/genproto v0.0.0-20220920201722-2b89144ce006 // indirect
 	google.golang.org/grpc v1.49.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
+	gopkg.in/confluentinc/confluent-kafka-go.v1 v1.8.2 // indirect
 	gopkg.in/ini.v1 v1.66.6 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

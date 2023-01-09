@@ -1,0 +1,10 @@
+---
+# For conn
+kafka_addr: localhost:9092
+kafka_topic: blah
+kafka_num_partition: 2
+
+kafka_mode: true
+
+# Redis
+redis_queue_key: demoX_blah
