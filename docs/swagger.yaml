@@ -1,0 +1,46 @@
+definitions:
+  handlers.GreeterResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  handlers.ResAndInput:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample demo API server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger DemoX-rk_api API Interface
+  version: "1.0"
+paths:
+  /v1/greeter:
+    get:
+      description: Send a message to a queue (redis or kafka)
+      parameters:
+      - description: Input required
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.ResAndInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.ResAndInput'
+      summary: Push a message to a queue
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
