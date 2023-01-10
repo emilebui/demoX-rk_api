@@ -48,6 +48,10 @@
 - `docs`: Contains the OpenAPI documentation
 - `pkg`: Contains all the pkg, helper modules to build Echo REST API
     - `swaginit`: Contains helper function for generating swagger file automatically
+    - `conn`: Contains helper functions to connect to message queue (kafka, redis)
+    - `unitest`: Contains helper functions for unit testing
 - `internal`: Contain endpoint and logic for each API. The structure of this module is as follows:
     - `handler`: Handle the all the endpoints of the application (take request, get input and pass it to logic layer)
+    - `repository`: Persistence handlers, all the persistence accees (database, message queue) are handled here
+    - `service`: Logic Layer, all the logic of the service are handled here
 - `boot.yaml`: The boot config contains all the configuration to run rk_boot application. (Configuration as code)
