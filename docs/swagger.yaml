@@ -4,6 +4,13 @@ definitions:
       message:
         type: string
     type: object
+  handlers.PushMessagesInput:
+    properties:
+      messages:
+        items:
+          type: string
+        type: array
+    type: object
   handlers.ResAndInput:
     properties:
       message:
@@ -24,6 +31,16 @@ info:
 paths:
   /v1/greeter:
     get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.GreeterResponse'
+      summary: Greeter service
+  /v1/push:
+    post:
       description: Send a message to a queue (redis or kafka)
       parameters:
       - description: Input required
@@ -40,6 +57,24 @@ paths:
           schema:
             $ref: '#/definitions/handlers.ResAndInput'
       summary: Push a message to a queue
+  /v1/push_many:
+    post:
+      description: Send multiple messages to a queue (redis or kafka)
+      parameters:
+      - description: Input required
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.PushMessagesInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.ResAndInput'
+      summary: Push many messages to a queue
 securityDefinitions:
   BasicAuth:
     type: basic

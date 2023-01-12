@@ -18,6 +18,22 @@
     "paths": {
         "/v1/greeter": {
             "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Greeter service",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.GreeterResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/push": {
+            "post": {
                 "description": "Send a message to a queue (redis or kafka)",
                 "produces": [
                     "application/json"
@@ -43,6 +59,34 @@
                     }
                 }
             }
+        },
+        "/v1/push_many": {
+            "post": {
+                "description": "Send multiple messages to a queue (redis or kafka)",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Push many messages to a queue",
+                "parameters": [
+                    {
+                        "description": "Input required",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handlers.PushMessagesInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.ResAndInput"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -51,6 +95,17 @@
             "properties": {
                 "message": {
                     "type": "string"
+                }
+            }
+        },
+        "handlers.PushMessagesInput": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
