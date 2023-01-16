@@ -8,7 +8,6 @@ import (
 	"github.com/emilebui/demoX-rk_api/internal/services"
 	"github.com/emilebui/demoX-rk_api/pkg/conn"
 	rkboot "github.com/rookie-ninja/rk-boot/v2"
-	rkredis "github.com/rookie-ninja/rk-db/redis"
 	rkecho "github.com/rookie-ninja/rk-echo/boot"
 	rkentry "github.com/rookie-ninja/rk-entry/v2/entry"
 )
@@ -58,9 +57,8 @@ func registerRepo(appConf *rkentry.ConfigEntry, logger *rkentry.LoggerEntry) rep
 
 	} else {
 		logger.Info("Initializing repository with Redis ...")
-		redisEntry := rkredis.GetRedisEntry("redis")
-		c, _ := redisEntry.GetClient()
-		repo = repositories.NewRedisRepo(c, appConf.GetString("redis_queue_key"))
+		redisClient := conn.GetRedisConn(appConf)
+		repo = repositories.NewRedisRepo(redisClient, appConf.GetString("redis_queue_key"))
 	}
 
 	return repo
