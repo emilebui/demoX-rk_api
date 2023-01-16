@@ -4,7 +4,10 @@ kafka_addr: localhost:9092
 kafka_topic: blah
 kafka_num_partition: 2
 
-kafka_mode: true
+kafka_mode: false
 
 # Redis
+redis_addr: localhost:6379
+redis_pwd: ""
+redis_db: 0
 redis_queue_key: demoX_blah
