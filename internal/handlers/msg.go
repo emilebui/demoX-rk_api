@@ -8,12 +8,14 @@ import (
 )
 
 type MessageHandler struct {
-	s *services.Service
+	s   *services.Service
+	iid string
 }
 
-func NewMessageHandler(s *services.Service) Handler {
+func NewMessageHandler(s *services.Service, iid string) Handler {
 	return &MessageHandler{
-		s: s,
+		s:   s,
+		iid: iid,
 	}
 }
 
@@ -43,11 +45,15 @@ func (h *MessageHandler) PushMessage(ctx echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	return ctx.JSON(http.StatusOK, ResAndInput{Message: "Push message to queue successfully!!"})
+	return ctx.JSON(http.StatusOK, ResAndInput{
+		Message:     "Push message to queue successfully!!",
+		APIInstance: h.iid,
+	})
 }
 
 type ResAndInput struct {
-	Message string `json:"message"`
+	Message     string `json:"message"`
+	APIInstance string `json:"api_instance"`
 }
 
 type PushMessagesInput struct {
@@ -77,5 +83,8 @@ func (h *MessageHandler) PushMessages(ctx echo.Context) error {
 		}
 	}
 
-	return ctx.JSON(http.StatusOK, ResAndInput{Message: "Push messages to queue successfully!!"})
+	return ctx.JSON(http.StatusOK, ResAndInput{
+		Message:     "Push messages to queue successfully!!",
+		APIInstance: h.iid,
+	})
 }

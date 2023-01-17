@@ -7,6 +7,7 @@ import (
 	"github.com/emilebui/demoX-rk_api/internal/repositories"
 	"github.com/emilebui/demoX-rk_api/internal/services"
 	"github.com/emilebui/demoX-rk_api/pkg/conn"
+	"github.com/google/uuid"
 	rkboot "github.com/rookie-ninja/rk-boot/v2"
 	rkecho "github.com/rookie-ninja/rk-echo/boot"
 	rkentry "github.com/rookie-ninja/rk-entry/v2/entry"
@@ -18,6 +19,9 @@ func Run() {
 	appConf := rkentry.GlobalAppCtx.GetConfigEntry("my-config")
 	logger := rkentry.GlobalAppCtx.GetLoggerEntry("app-logger")
 	echoEntry := rkecho.GetEchoEntry("demoX-rk_api")
+
+	// Init api instance
+	instanceID := uuid.New()
 
 	// Add shutdown hook function
 	boot.AddShutdownHookFunc("shutdown-hook", func() {
@@ -36,7 +40,7 @@ func Run() {
 
 	// Register Handlers
 	demoHandler := handlers.NewDemoHandler()
-	msgHandler := handlers.NewMessageHandler(service)
+	msgHandler := handlers.NewMessageHandler(service, instanceID.String())
 
 	// Register API
 	demoHandler.RegisterAPI(echoEntry)
