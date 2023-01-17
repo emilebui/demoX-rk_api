@@ -43,7 +43,7 @@ func BenchmarkMessageHandler_PushMessage(b *testing.B) {
 
 func TestNewMessageHandler(t *testing.T) {
 	service := unitest.CreateFakeService()
-	check := NewMessageHandler(service)
+	check := NewMessageHandler(service, "blah")
 	if check == nil {
 		t.Error("This should not be nil")
 	}
