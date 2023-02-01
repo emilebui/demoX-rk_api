@@ -4,14 +4,12 @@
 name: ci-pipeline
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
 
-  build_and_test:
+  CI_Pipeline:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
