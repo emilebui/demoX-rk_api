@@ -27,7 +27,7 @@ func (h *DemoHandler) RegisterAPI(echoEntry *rkecho.EchoEntry) {
 // @Router /v1/greeter [get]
 func (h *DemoHandler) Greeter(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, &GreeterResponse{
-		Message: fmt.Sprintf("Hello World! -- App version 1.0.0"),
+		Message: fmt.Sprintf("Hello World! -- App version 3.1.1"),
 	})
 }
 
